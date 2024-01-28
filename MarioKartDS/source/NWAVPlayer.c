@@ -503,11 +503,18 @@ static void StrmThread(void* arg)
 	}
 }
 
+extern int NWAV_FIRST_ID;
+
 void NWAV_Init()
 {
 #ifdef NWAV_DEBUG_PRINT
 	nocashPrint("NWAV_Init()\n");
 #endif
+
+	FSFileID fileID;
+	BOOL success = FS_ConvertPathToFileID(&fileID, "waves/0_normal/track000.nwav");
+	if(success)
+		NWAV_FIRST_ID = fileID.file_id;
 
 	//Lock the channels.
 	SND_LockChannel(1 << CHANNEL_L_NUM | 1 << CHANNEL_R_NUM, 0);
