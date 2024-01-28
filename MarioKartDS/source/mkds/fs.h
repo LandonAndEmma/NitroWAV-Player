@@ -13,6 +13,13 @@ typedef enum
 }
 FSSeekFileMode;
 
+typedef struct
+{
+    void *arc;                         /* attached archive */
+    u32     file_id;                   /* index of FAT of attached archive */
+}
+FSFileID;
+
 #ifdef __cplusplus
 extern "C"
 {
